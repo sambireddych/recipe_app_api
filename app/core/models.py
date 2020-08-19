@@ -13,7 +13,7 @@ class UserManager(BaseUserManager):
 
         user.save(using=self._db)
         return user
-    
+
     def create_superuser(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('must have an email address')
@@ -32,5 +32,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     objects = UserManager()
-    
     USERNAME_FIELD = 'email'
